@@ -1,0 +1,5 @@
+project: savantenvs/xous-core
+target: store
+
+cmds:
+  - cmd: /mayhem/store
