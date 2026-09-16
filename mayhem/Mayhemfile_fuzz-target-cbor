@@ -1,0 +1,10 @@
+project: savantenvs/xous-core
+target: fuzz-target-cbor-buggy-mhh-run-10
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz-target-cbor-buggy-mhh-run-10/testsuite
+
+cmds:
+  - cmd: /mayhem/fuzz_target_cbor
+    libfuzzer: true

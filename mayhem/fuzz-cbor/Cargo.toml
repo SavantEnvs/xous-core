@@ -1,0 +1,30 @@
+# Additive mirror of apps/vault/libraries/cbor/fuzz at this commit — same
+# dependency version as the vulnerable-era upstream fuzz crate (libfuzzer-sys
+# 0.3), built with the era-matched nightly pinned in mayhem/Dockerfile
+# (RUST_CHANNEL). The double-free this backport reproduces only manifests
+# under that ~2022-09 nightly + ASan combination; a current nightly no longer
+# triggers it on the same corpus (verified: 0/261 vs 17/261 crashing seeds).
+[package]
+name = "cbor-fuzz-mayhem"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.3"
+
+[dependencies.cbor]
+path = "../../apps/vault/libraries/cbor"
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_target_cbor"
+path = "fuzz_targets/fuzz_target_cbor.rs"
+test = false
+doc = false
