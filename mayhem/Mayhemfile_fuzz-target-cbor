@@ -1,0 +1,7 @@
+project: savantenvs/xous-core
+target: fuzz-target-cbor-buggy-mhh-run-10
+# origin: https://app.mayhem.security/mayhemheroes/xous-core/fuzz-target-cbor/10
+
+cmds:
+  - cmd: /mayhem/fuzz_target_cbor
+    libfuzzer: true
